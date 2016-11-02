@@ -1,0 +1,5 @@
+cb-cv-som-default (0.0.1-0) unstable; urgency=low
+  2016/10/02
+    * top.sv:
+        Add legal notice to this file
+      [dh]

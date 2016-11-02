@@ -1,0 +1,14 @@
+Short list of changes, additions and fixes.
+Notation:
+! - bug fixed
+* - change, code addition
++ - new feature
+===================================================
+
+
+cb-cv-som-default (0.0.1-0) Wen, 02 Nov 2016 16:00:00 +0300
+***********************************************************
+
+  + Initial Version. Can flash orange LED on cb-cv-som board.
+
+
