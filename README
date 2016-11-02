@@ -17,10 +17,10 @@ Description
   registers.
 
   The project contains qsys project with some standard
-  Altera IP-cores:
-     * System ID Peripheral (the ID is 0x01000001)
-     * PIO (used to flash the LED)
-     * On-Chip-Memory (4KB)
+  Altera IP-cores (Base bus address/end bus address):
+     * System ID Peripheral (the ID is 0x01000001) (0xC000_0000/0xC000_0007)
+     * PIO (used to flash the LED)                 (0xC000_0010/0xC000_001f)
+     * On-Chip-Memory (4KB)                        (0xC000_1000/0xC000_1fff)
 
   Learn more about this system via qsys.
 
