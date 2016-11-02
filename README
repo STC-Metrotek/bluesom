@@ -1,5 +1,74 @@
-Это FPGA прошивка для проекта CbCvSom.
+Name
+----
 
-В себе содержит просто доступ к FPGA,
-светодиоду, а так же "информацию" о прошивки в виде
-system_id.
+  CB-CV-SOM FPGA default project
+
+Synopsys
+--------
+
+  Simple almost blank FPGA project for CV-CE-SOM (aka BlueSoM)
+  board.
+
+Description
+-----------
+
+  The project makes avaible to flash on/off the orange LED on
+  CB-CV-SOM board (there is only one accessible) using fpga 
+  registers.
+
+  The project contains qsys project with some standard
+  Altera IP-cores:
+     * System ID Peripheral (the ID is 0x01000001)
+     * PIO (used to flash the LED)
+     * On-Chip-Memory (4KB)
+
+  Learn more about this system via qsys.
+
+  To flash on the LED write 1 to 0xC0000010 bus address.
+  To flash off the LED write 0 to the same address.
+
+  If it doesn't work, make sure you use the appropriate preloader binary.
+
+Build
+-----
+
+  Use Altera Quartus-14.1 (build on other versions not tested)
+  Launch it, open top.qpf and push "start compilation".
+
+  Your .sof, .rbf will be ready in output_files/
+
+  Build preloader:
+
+    ! This stage shall be done only after fpga firmware building complete !
+
+    cd hps_isw_handoff
+
+    <your quartus path>/embedded/embedded_command_shell.sh 
+
+    bsp-create-settings --type spl --bsp-dir build --preloader-settings-dir soc_hps_0 --settings build/settings.bsp
+
+    make -C build
+
+Copyright
+---------
+
+  STC Metrotek, 2016
+
+See also/references
+-------------------
+
+Date
+----
+
+  10/2/2016
+
+Authors
+-------
+
+  Dmitry Hodyrev d.hodyrev@metrotek.spb.ru
+
+
+
+
+
+
