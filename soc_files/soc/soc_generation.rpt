@@ -14,6 +14,10 @@ Progress: Adding pio_led [altera_avalon_pio 14.0]
 Progress: Parameterizing module pio_led
 Progress: Adding sysid_qsys_0 [altera_avalon_sysid_qsys 14.0]
 Progress: Parameterizing module sysid_qsys_0
+Progress: Adding mm_bridge_0 [altera_avalon_mm_bridge 14.0]
+Progress: Parameterizing module mm_bridge_0
+Progress: Adding clock_bridge_1 [altera_clock_bridge 14.0]
+Progress: Parameterizing module clock_bridge_1
 Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
@@ -43,6 +47,10 @@ Progress: Adding pio_led [altera_avalon_pio 14.0]
 Progress: Parameterizing module pio_led
 Progress: Adding sysid_qsys_0 [altera_avalon_sysid_qsys 14.0]
 Progress: Parameterizing module sysid_qsys_0
+Progress: Adding mm_bridge_0 [altera_avalon_mm_bridge 14.0]
+Progress: Parameterizing module mm_bridge_0
+Progress: Adding clock_bridge_1 [altera_clock_bridge 14.0]
+Progress: Parameterizing module clock_bridge_1
 Progress: Building connections
 Progress: Parameterizing connections
 Progress: Validating
@@ -63,14 +71,11 @@ Info: hps_0: HLGPI is not available for Device 5CSEBA4U19C8 (484 pins)
 Info: hps_0: "soc" instantiated altera_hps "hps_0"
 Info: pll_0: "soc" instantiated altera_pll "pll_0"
 Info: onchip_memory: Starting RTL generation for module 'soc_onchip_memory'
-Info: onchip_memory:   Generation command is [exec /opt/altera/quartus14.0/quartus/linux64/perl/bin/perl -I /opt/altera/quartus14.0/quartus/linux64/perl/lib -I /opt/altera/quartus14.0/quartus/sopc_builder/bin/europa -I /opt/altera/quartus14.0/quartus/sopc_builder/bin/perl_lib -I /opt/altera/quartus14.0/quartus/sopc_builder/bin -I /opt/altera/quartus14.0/quartus/../ip/altera/sopc_builder_ip/common -I /opt/altera/quartus14.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /opt/altera/quartus14.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=soc_onchip_memory --dir=/tmp/alt7107_1369315368650877638.dir/0002_onchip_memory_gen/ --quartus_dir=/opt/altera/quartus14.0/quartus --verilog --config=/tmp/alt7107_1369315368650877638.dir/0002_onchip_memory_gen//soc_onchip_memory_component_configuration.pl  --do_build_sim=0  ]
+Info: onchip_memory:   Generation command is [exec /opt/altera/quartus14.0/quartus/linux64/perl/bin/perl -I /opt/altera/quartus14.0/quartus/linux64/perl/lib -I /opt/altera/quartus14.0/quartus/sopc_builder/bin/europa -I /opt/altera/quartus14.0/quartus/sopc_builder/bin/perl_lib -I /opt/altera/quartus14.0/quartus/sopc_builder/bin -I /opt/altera/quartus14.0/quartus/../ip/altera/sopc_builder_ip/common -I /opt/altera/quartus14.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /opt/altera/quartus14.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=soc_onchip_memory --dir=/tmp/alt7112_274831834564623107.dir/0002_onchip_memory_gen/ --quartus_dir=/opt/altera/quartus14.0/quartus --verilog --config=/tmp/alt7112_274831834564623107.dir/0002_onchip_memory_gen//soc_onchip_memory_component_configuration.pl  --do_build_sim=0  ]
 Info: onchip_memory: Done RTL generation for module 'soc_onchip_memory'
 Info: onchip_memory: "soc" instantiated altera_avalon_onchip_memory2 "onchip_memory"
-Info: pio_led: Starting RTL generation for module 'soc_pio_led'
-Info: pio_led:   Generation command is [exec /opt/altera/quartus14.0/quartus/linux64/perl/bin/perl -I /opt/altera/quartus14.0/quartus/linux64/perl/lib -I /opt/altera/quartus14.0/quartus/sopc_builder/bin/europa -I /opt/altera/quartus14.0/quartus/sopc_builder/bin/perl_lib -I /opt/altera/quartus14.0/quartus/sopc_builder/bin -I /opt/altera/quartus14.0/quartus/../ip/altera/sopc_builder_ip/common -I /opt/altera/quartus14.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /opt/altera/quartus14.0/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=soc_pio_led --dir=/tmp/alt7107_1369315368650877638.dir/0003_pio_led_gen/ --quartus_dir=/opt/altera/quartus14.0/quartus --verilog --config=/tmp/alt7107_1369315368650877638.dir/0003_pio_led_gen//soc_pio_led_component_configuration.pl  --do_build_sim=0  ]
-Info: pio_led: Done RTL generation for module 'soc_pio_led'
-Info: pio_led: "soc" instantiated altera_avalon_pio "pio_led"
 Info: sysid_qsys_0: "soc" instantiated altera_avalon_sysid_qsys "sysid_qsys_0"
+Info: mm_bridge_0: "soc" instantiated altera_avalon_mm_bridge "mm_bridge_0"
 Info: mm_interconnect_0: "soc" instantiated altera_mm_interconnect "mm_interconnect_0"
 Info: irq_mapper: "soc" instantiated altera_irq_mapper "irq_mapper"
 Info: rst_controller: "soc" instantiated altera_reset_controller "rst_controller"

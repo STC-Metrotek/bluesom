@@ -1,3 +1,4 @@
+
 /*
   Legal Notice: Copyright 2016 STC Metrotek.
 
@@ -20,7 +21,9 @@
   Author: Dmitry Hodyrev d.hodyrev@metrotek.spb.ru
   Date: 02.10.2016
 
-  1.0 -- Initial release
+  0.0.1-0 -- Initial release
+
+  0.0.1-1
 
   */
 
@@ -91,15 +94,26 @@ module top(
   inout  wire        hps_io_hps_io_gpio_inst_LOANIO09
 );
 
+localparam LED_HPS_PIN_NUM = 9;
+localparam LED_REGS_CNT    = 1;
+
+logic clk_100m;
+
+logic        fpga_regs_waitrequest;
+logic [31:0] fpga_regs_readdata;
+logic        fpga_regs_readdatavalid;
+logic [31:0] fpga_regs_writedata;
+logic [7:0]  fpga_regs_address;
+logic        fpga_regs_write;
+logic        fpga_regs_read;
+
 logic [66:0] hps_loan_io_in;
 logic [66:0] hps_loan_io_out;
 logic [66:0] hps_loan_io_oe;
-logic        pio_led_w;
-
-localparam LED_HPS_PIN_NUM = 9;
+logic        led_ctrl;
 
 // like https://www.altera.com/en_US/pdfs/literature/an/an702.pdf, page 8
-assign hps_loan_io_out[ LED_HPS_PIN_NUM ] = pio_led_w;
+assign hps_loan_io_out[ LED_HPS_PIN_NUM ] = led_ctrl;
 assign hps_loan_io_oe [ LED_HPS_PIN_NUM ] = 1'b1;
 
 soc soc(
@@ -166,13 +180,43 @@ soc soc(
   .hps_io_hps_io_gpio_inst_LOANIO09       ( hps_io_hps_io_gpio_inst_LOANIO09  ),
 
   .clk_25m_clk                            ( clk_25m_i                         ),
+  .clk_100m_clk                           ( clk_100m                          ),
 
   .hps_loan_io_in                         ( hps_loan_io_in                    ),
   .hps_loan_io_out                        ( hps_loan_io_out                   ),
   .hps_loan_io_oe                         ( hps_loan_io_oe                    ),
 
-  .pio_led_external_export                ( pio_led_w                         )
+  .fpga_regs_waitrequest                  ( fpga_regs_waitrequest             ),
+  .fpga_regs_readdata                     ( fpga_regs_readdata                ),
+  .fpga_regs_readdatavalid                ( fpga_regs_readdatavalid           ),
+  .fpga_regs_burstcount                   (                                   ),
+  .fpga_regs_writedata                    ( fpga_regs_writedata               ),
+  .fpga_regs_address                      ( fpga_regs_address                 ),
+  .fpga_regs_write                        ( fpga_regs_write                   ),
+  .fpga_regs_read                         ( fpga_regs_read                    ),
+  .fpga_regs_byteenable                   (                                   ),
+  .fpga_regs_debugaccess                  (                                   )
 );
+
+led_flicker #(
+  .CLOCK_FREQ_MHZ                         ( 100                               ),
+  .REGS_CNT                               ( LED_REGS_CNT                      )
+ ) led_flicker  (
+  .clk_i                                  ( clk_100m                          ),
+  .srst_i                                 (                                   ),
+
+  .amm_address_i                          ( fpga_regs_address[LED_REGS_CNT-1:0]),
+  .amm_writedata_i                        ( fpga_regs_writedata               ),
+  .amm_read_i                             ( fpga_regs_read                    ),
+  .amm_write_i                            ( fpga_regs_write                   ),
+  .amm_readdata_o                         ( fpga_regs_readdata                ),
+  .amm_readdatavalid_o                    ( fpga_regs_readdatavalid           ),
+  .amm_waitrequest_o                      ( fpga_regs_waitrequest             ),
+
+  .led_o                                  ( led_ctrl                          )
+);
+
+
 
 
 endmodule

@@ -12,22 +12,24 @@ Synopsys
 Description
 -----------
 
-  The project makes avaible to flash on/off the orange LED on
-  CB-CV-SOM board (there is only one accessible) using fpga 
-  registers.
+  This project makes avaible to turn cb-cv-som board orange LED
+  on flicking with given period. Duty cycle = 50%
 
-  The project contains qsys project with some standard
-  Altera IP-cores (Base bus address/end bus address):
+  The register to control period:
+     * CPU address : 0xC000_1000
+     * 32-bit register, but only lower 16 bit are accessible;
+       writing at higher 16 bit has no effect.
+     * One ?? of the registers value corresponding to a millisecond. // fix me plz
+     * Minimum value 0x20 (protected)
+
+  All memory mapped items in FPGA (Base bus address/end bus address):
      * System ID Peripheral (the ID is 0x01000001) (0xC000_0000/0xC000_0007)
-     * PIO (used to flash the LED)                 (0xC000_0010/0xC000_001f)
-     * On-Chip-Memory (4KB)                        (0xC000_1000/0xC000_1fff)
+     * Avalon-MM interface (named "fpga_regs")     (0xC000_1000/0xC000_13ff)
+     * On-Chip-Memory (4KB)                        (0xC000_2000/0xC000_2fff)
 
   Learn more about this system via qsys.
 
-  To flash on the LED write 1 to 0xC0000010 bus address.
-  To flash off the LED write 0 to the same address.
-
-  If it doesn't work, make sure you use the appropriate preloader binary.
+  If orange LED doesn't work, make sure you use the appropriate preloader binary.
 
 Build
 -----
@@ -60,7 +62,7 @@ See also/references
 Date
 ----
 
-  10/2/2016
+  11/07/2016
 
 Authors
 -------

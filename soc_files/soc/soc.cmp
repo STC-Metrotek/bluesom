@@ -64,7 +64,17 @@
 			hps_loan_io_in                   : out   std_logic_vector(66 downto 0);                    -- in
 			hps_loan_io_out                  : in    std_logic_vector(66 downto 0) := (others => 'X'); -- out
 			hps_loan_io_oe                   : in    std_logic_vector(66 downto 0) := (others => 'X'); -- oe
-			pio_led_external_export          : out   std_logic                                         -- export
+			fpga_regs_waitrequest            : in    std_logic                     := 'X';             -- waitrequest
+			fpga_regs_readdata               : in    std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
+			fpga_regs_readdatavalid          : in    std_logic                     := 'X';             -- readdatavalid
+			fpga_regs_burstcount             : out   std_logic_vector(0 downto 0);                     -- burstcount
+			fpga_regs_writedata              : out   std_logic_vector(31 downto 0);                    -- writedata
+			fpga_regs_address                : out   std_logic_vector(7 downto 0);                     -- address
+			fpga_regs_write                  : out   std_logic;                                        -- write
+			fpga_regs_read                   : out   std_logic;                                        -- read
+			fpga_regs_byteenable             : out   std_logic_vector(3 downto 0);                     -- byteenable
+			fpga_regs_debugaccess            : out   std_logic;                                        -- debugaccess
+			clk_100m_clk                     : out   std_logic                                         -- clk
 		);
 	end component soc;
 
