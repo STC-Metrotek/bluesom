@@ -21,7 +21,7 @@
   Date: 02.10.2016
 
   A simple blank avalon-mm write-only regfile.
-  Specific property -- parameter for zero register initial value. 
+  Specific property -- parameter for zero register initial value.
   */
 
 
@@ -49,16 +49,16 @@ module led_flicker_regfile #(
 logic [REGS_CNT-1:0][REG_SIZE-1:0] regs;
 
 logic [31:0] readdata;
-logic        readdatavalid; 
+logic        readdatavalid;
 
 initial regs = FIRST_REG_INITIAL_VALUE;
 
 always_ff @( posedge clk_i )
   if( srst_i )
-    regs <= FIRST_REG_INITIAL_VALUE; 
+    regs <= FIRST_REG_INITIAL_VALUE;
   else
     begin
-      if( amm_write_i ) 
+      if( amm_write_i )
        //csr[amm_address_i] <= amm_writedata_i;
         regs <= amm_writedata_i;
     end
@@ -66,8 +66,8 @@ always_ff @( posedge clk_i )
 always_comb
   begin
     readdata      = '0;
-    readdatavalid = '0; 
-    if( amm_read_i ) 
+    readdatavalid = '0;
+    if( amm_read_i )
       begin
        //readdata      = csr[amm_address_i];
         readdata      = regs;
@@ -84,10 +84,6 @@ always_ff @( posedge clk_i )
 // always ready
 assign amm_waitrequest_o = '0;
 
-assign regs_o = regs; 
+assign regs_o = regs;
 
-endmodule 
-     
-         
-         
-
+endmodule

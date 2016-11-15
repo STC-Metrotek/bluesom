@@ -21,7 +21,7 @@
   Date: 02.10.2016
 
   Module led_flicker contains logic to produce LED control
-  signal (square wave). Period of this signal can be set 
+  signal (square wave). Period of this signal can be set
   via regfile (zero regisrer). One bit of the registers
   value is equal one millisecond. The lower limit is 32 ms.
 
