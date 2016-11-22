@@ -27,20 +27,21 @@
 
 
 module led_flicker_regfile #(
-  parameter                                 REG_SIZE = 32,
-  parameter                                 REGS_CNT = 1,
-  parameter                                 FIRST_REG_INITIAL_VALUE = 500
+  parameter                         REG_SIZE = 32,
+  parameter                         REGS_CNT = 1,
+  parameter                         REGS_REAL_CNT = ( REGS_CNT == 1 ) ? 1 : $clog2(REGS_CNT);
+  parameter                         FIRST_REG_INITIAL_VALUE = 500
   ) (
-  input                                     clk_i, 
-  input                                     srst_i,
+  input                             clk_i,
+  input                             srst_i,
    // CSR IF
-  input [$clog2(REGS_CNT)-1:0]              amm_address_i,
-  input [REG_SIZE-1:0]                      amm_writedata_i,
-  input                                     amm_read_i,
-  input                                     amm_write_i,
-  output logic [REG_SIZE-1:0]               amm_readdata_o,
-  output logic                              amm_readdatavalid_o,
-  output logic                              amm_waitrequest_o,
+  input [$clog2(REGS_REAL_CNT)-1:0] amm_address_i,
+  input [REG_SIZE-1:0]              amm_writedata_i,
+  input                             amm_read_i,
+  input                             amm_write_i,
+  output logic [REG_SIZE-1:0]       amm_readdata_o,
+  output logic                      amm_readdatavalid_o,
+  output logic                      amm_waitrequest_o,
 
   output logic [REGS_CNT-1:0][REG_SIZE-1:0] regs_o
   );
