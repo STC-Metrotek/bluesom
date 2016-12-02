@@ -1,0 +1,24 @@
+cb-cv-som-default (0.0.1-1) unstable; urgency=low
+  2016/10/07
+    * top.sv:
+        Add led_flicker instance, add new port connections to the soc
+        instance port connection list (fpga regs interface wires, 100m clk)
+      [dh]
+
+    * soc_files/soc.qsys:
+        Remove PIO, export Avalon-MM interface (hps2fpga), export 100 MHz clk,
+        change addresses of hps2fpga bus units (see new addresses in README)
+      [dh]
+
+    + led_flicker.sv:
+    + led_flicker_regfile.sv:
+        Led flicker files. Used to control LED flicker period.
+      [dh]
+
+ -- Dmitry Hodyrev <d.hodyrev@metrotek.spb.ru>  Mon, 07 Nov 2016 20:38:43 +0300
+
+cb-cv-som-default (0.0.1-0) unstable; urgency=low
+  2016/10/02
+    * top.sv:
+        Add legal notice to this file
+      [dh]
